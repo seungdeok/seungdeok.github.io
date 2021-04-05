@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='home.css'>
+    <title>LikeTube</title>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-wrapper">
+      <div class="nav-left">
+        <img class="menu" src="https://icongr.am/feather/menu.svg?size=24&color=000000">
+        <div class="logo">
+          <img class="logo-thumbnail" src="https://yt3.ggpht.com/ytc/AAUvwnhD-VC-S4GclON-fqYMnGjwl5aHpDHmsGGkGPaY=s176-c-k-c0x00ffffff-no-rj-mo">
+          <div>LikeTube</div>
+        </div>
+      </div>
+      <div class="nav-right">
+        <label class="theme-switch" for="checkbox">
+          <img class="switch" src='https://icongr.am/material/alarm-light-outline.svg?size=128&color=000000' />
+          <input type="checkbox" id="checkbox" />
+        </label>
+      </div>
+    </div>
+    <div class="player-wrapper">
+      <iframe class="player" src="https://www.youtube.com/embed/dFCM4C0XRzw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="watch-wrapper">
+      <div class="column info-wrapper">
+        <div class="column title-wrapper">
+          <div class="title">Youtube 클론 코딩 프로젝트</div>
+          <div class="desc">현재 1,300명 시청중 ・ 스트리밍 시작일: 2021.4.5.</div>
+        </div>
+        <div class="row profile-wrapper">
+          <img class='profile-thumbnail' src="https://yt3.ggpht.com/ytc/AAUvwnhD-VC-S4GclON-fqYMnGjwl5aHpDHmsGGkGPaY=s176-c-k-c0x00ffffff-no-rj-mo">
+          <div class="profile-desc">
+            <div class="row action-wrapper">
+              <div class="column">
+                <div class="title">멋쟁이사자처럼</div>
+                <div class="desc">구독자: 7만명</div>
+              </div>
+              <div class="action-button" onclick="onClickSubscribe()">구독</div>
+              <div class="row action-button-wrapper" onclick="onClickCancelSubscribe()">
+                <div>구독중</div>
+                <img src="https://icongr.am/feather/bell.svg?size=24&color=606060">
+              </div>
+            </div>
+            <div class="profile-content">
+              설명입니다.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column chat-wrapper">
+        <div class="action-button">채팅 표시</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+          toggleSwitch.checked = true;
+          document.querySelector('.menu').src = 'https://icongr.am/feather/menu.svg?size=24&color=ffffff';
+          document.querySelector('.switch').src = 'https://icongr.am/material/alarm-light-outline.svg?size=128&color=ffffff';
+        }
+    }
+
+    function switchTheme(e) {
+      if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        document.querySelector('.menu').src = 'https://icongr.am/feather/menu.svg?size=24&color=ffffff';
+        document.querySelector('.switch').src = 'https://icongr.am/material/alarm-light-outline.svg?size=128&color=ffffff';
+      }
+      else {        
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        document.querySelector('.menu').src = 'https://icongr.am/feather/menu.svg?size=24&color=000000';
+        document.querySelector('.switch').src = 'https://icongr.am/material/alarm-light-outline.svg?size=128&color=000000';
+      }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+
+    function onClickSubscribe() {
+      document.querySelector('.profile-desc .action-wrapper .action-button').style.display = 'none';
+      document.querySelector('.profile-desc .action-wrapper .action-button-wrapper').style.display = 'flex';
+    }
+
+    function onClickCancelSubscribe() {
+      const message = confirm('구독취소 하시겠습니까?');
+      if(message) {
+        document.querySelector('.profile-desc .action-wrapper .action-button').style.display = 'flex';
+        document.querySelector('.profile-desc .action-wrapper .action-button-wrapper').style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
