@@ -2,6 +2,7 @@
   "name": "seungdeok.github.io",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://seungdeok.github.io",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -17,7 +18,11 @@
     "start": "react-scripts start",
     "postinstall": "husky install",
     "format": "prettier --cache --write .",
-    "lint": "eslint --cache ."
+    "lint": "eslint --cache .",
+    "build": "react-scripts build",
+    "postbuild": "cp build/index.html build/404.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,6 +46,7 @@
     "@types/react-dom": "^18.0.0",
     "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
+    "gh-pages": "^5.0.0",
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "typescript": "^5.0.4"
