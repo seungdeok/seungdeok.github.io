@@ -1,8 +1,6 @@
 import * as React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
+import { Box, Link, Typography, Container } from '@mui/material';
+import { SDAppBar } from '../components/AppBar';
 
 function Copyright() {
   return (
@@ -18,13 +16,16 @@ function Copyright() {
 
 export const HomePage = () => {
   return (
-    <Container maxWidth="lg">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Material UI Create React App example in TypeScript
-        </Typography>
-        <Copyright />
-      </Box>
-    </Container>
+    <Box sx={{ display: 'flex', p: 12 }}>
+      <SDAppBar />
+      <Container maxWidth="lg">
+        <Box component="main">
+          <Typography variant="h4" component="h1" gutterBottom>
+            Material UI Create React App example in TypeScript
+          </Typography>
+          <Copyright />
+        </Box>
+      </Container>
+    </Box>
   );
 };
