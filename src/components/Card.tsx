@@ -15,7 +15,7 @@ export interface ICard {
 
 export const SDCard = ({ label, description, githubURL, webURL }: ICard) => {
   return (
-    <Card sx={{ maxWidth: 586 }}>
+    <Card sx={{ width: '100%' }}>
       <CardContent>
         <Typography gutterBottom variant="h5" fontWeight="bold" component="div">
           {label}

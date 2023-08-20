@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { Box, Link, Typography, Container } from '@mui/material';
+import {
+  Box,
+  Link,
+  Typography,
+  Container,
+  Stack,
+  makeStyles,
+  Grid,
+} from '@mui/material';
 import { SDAppBar } from '../components/AppBar';
 import { SDCard } from '../components/Card';
 import { cardItems } from '../configs/card';
@@ -18,24 +26,27 @@ function Copyright() {
 
 export const HomePage = () => {
   return (
-    <Box sx={{ display: 'flex', p: 12 }}>
+    <Box sx={{ display: 'flex', paddingX: 2, paddingY: 12 }}>
       <SDAppBar />
       <Container maxWidth="lg">
         <Box component="main">
           <Typography variant="h4" component="h1" gutterBottom>
             Make, Share, Write
           </Typography>
-          {cardItems.map((item) => {
-            return (
-              <SDCard
-                key={item.label}
-                label={item.label}
-                description={item.description}
-                githubURL={item.githubURL}
-                webURL={item.webURL}
-              />
-            );
-          })}
+          <Grid container columnSpacing={2} rowGap={2}>
+            {cardItems.map((item) => {
+              return (
+                <Grid key={item.label} item xs={12} sm={6} minHeight={144}>
+                  <SDCard
+                    label={item.label}
+                    description={item.description}
+                    githubURL={item.githubURL}
+                    webURL={item.webURL}
+                  />
+                </Grid>
+              );
+            })}
+          </Grid>
           <Box marginTop={4}>
             <Copyright />
           </Box>
