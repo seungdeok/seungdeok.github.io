@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  Box,
-  Link,
-  Typography,
-  Container,
-  Stack,
-  makeStyles,
-  Grid,
-} from '@mui/material';
+import { Box, Link, Typography, Container, Grid } from '@mui/material';
 import { SDAppBar } from '../components/AppBar';
 import { SDCard } from '../components/Card';
 import { cardItems } from '../configs/card';
